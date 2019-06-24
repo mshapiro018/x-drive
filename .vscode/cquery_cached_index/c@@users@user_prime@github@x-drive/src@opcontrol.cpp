@@ -28,13 +28,13 @@ void opcontrol() {
 		int horizontal = master.get_analog(ANALOG_LEFT_X);
 		int turn = master.get_analog(ANALOG_RIGHT_X);
 
-		#define VMH (vertical-horizontal)
-		#define VPH (vertical+horizontal)
-		left_front.move(VPH+turn);
-		right_front.move(VMH-turn);
-		right_back.move(VPH-turn);
-		left_back.move(VMH+turn);
-		
+		#define VMH (vertical - horizontal)
+		#define VPH (vertical + horizontal)
+		left_front.move( (VPH + turn) / 3 );
+		right_front.move( (VMH - turn) / 3 );
+		right_back.move( (VPH - turn) / 3 );
+		left_back.move( (VMH + turn) / 3 );
+
 		pros::delay(20);
 	}
 }
