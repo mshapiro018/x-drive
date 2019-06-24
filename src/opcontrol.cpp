@@ -34,6 +34,7 @@ void opcontrol() {
 		right_front.move(VMH-turn);
 		right_back.move(VPH-turn);
 		left_back.move(VMH+turn);
+		
 		pros::delay(20);
 	}
 }
