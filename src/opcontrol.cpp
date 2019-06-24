@@ -26,11 +26,14 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		int vertical = master.get_analog(ANALOG_LEFT_Y);
 		int horizontal = master.get_analog(ANALOG_LEFT_X);
+		int turn = master.get_analog(ANALOG_RIGHT_X);
 
-		left_front.move(vertical+horizontal);
-		right_front.move(vertical-horizontal);
-		right_back.move(vertical+horizontal);
-		left_back.move(vertical-horizontal);
+		#define VMH (vertical-horizontal)
+		#define VPH (vertical+horizontal)
+		left_front.move(VPH+turn);
+		right_front.move(VMH-turn);
+		right_back.move(VPH-turn);
+		left_back.move(VMH+turn);
 		pros::delay(20);
 	}
 }
